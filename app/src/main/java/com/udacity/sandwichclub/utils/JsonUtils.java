@@ -9,25 +9,32 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class JsonUtils {
+    public static String NAME        = "name";
+    public static String MAIN_NAME   = "mainName";
+    public static String ALSOKNWONAS = "alsoKnownAs";
+    public static String ORIGIN      = "placeOfOrigin";
+    public static String IMAGE       = "image";
+    public static String DESCRIPTION = "description";
+    public static String INGREDIENTS = "ingredients";
 
     public static Sandwich parseSandwichJson(String json) {
 
         try {
             JSONObject        root          = new JSONObject(json);
-            JSONObject        name          = root.getJSONObject("name");
-            String            mainName      = name.getString("mainName");
-            JSONArray         jaAlsoKnownAs = name.getJSONArray("alsoKnownAs");
+            JSONObject        name          = root.getJSONObject(NAME);
+            String            mainName      = name.getString(MAIN_NAME);
+            JSONArray         jaAlsoKnownAs = name.getJSONArray(ALSOKNWONAS);
             ArrayList<String> alsoKnownAs   = new ArrayList<String>();
 
             for (int i = 0; i < jaAlsoKnownAs.length(); i++) {
                 alsoKnownAs.add(jaAlsoKnownAs.getString(i));
             }
 
-            String placeOfOrigin = root.getString("placeOfOrigin");
-            String description   = root.getString("description");
-            String image         = root.getString("image");
+            String placeOfOrigin = root.getString(ORIGIN);
+            String description   = root.getString(DESCRIPTION);
+            String image         = root.getString(IMAGE);
 
-            JSONArray         jaIngredients = root.getJSONArray("ingredients");
+            JSONArray         jaIngredients = root.getJSONArray(INGREDIENTS);
             ArrayList<String> ingredients   = new ArrayList<String>();
 
             for (int i = 0; i < jaIngredients.length(); i++) {
