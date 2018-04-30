@@ -13,7 +13,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="edit_text">
+    <style name="content_text">
         <item name="android:textSize">20sp</item>
     </style>
 </resources>
